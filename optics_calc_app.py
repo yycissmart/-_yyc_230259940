@@ -388,9 +388,9 @@ elif mode == "激光光斑功率密度":
             A = np.pi * r**2
             I = P / A  # W/m^2
             if out == "W/cm²":
-                st.success(f"平均功率密度 I ≈ {(I/1e4):.4g} W/cm²")
+                st.success(f"平均功率密度 I ≈ {format_eng(I/1e4, 'W/cm²')}")
             else:
-                st.success(f"平均功率密度 I ≈ {I:.4g} W/m²")
+                st.success(f"平均功率密度 I ≈ {format_eng(I, 'W/m²')}")
 
     else:  # Gaussian with 1/e^2 radius w
         c3, c4 = st.columns(2)
@@ -408,11 +408,11 @@ elif mode == "激光光斑功率密度":
             I0 = 2 * P / (np.pi * w**2)  # 峰值强度(平均功率对应的峰值)
             I_avg_over_disk = P / (np.pi * w**2)  # 作为一个“特征平均”也有人用
             if out == "W/cm²":
-                st.success(f"高斯峰值功率密度 I0 ≈ {(I0/1e4):.4g} W/cm²")
-                st.write(f"（参考：特征平均 P/(πw²) ≈ {(I_avg_over_disk/1e4):.4g} W/cm²）")
+                st.success(f"高斯峰值功率密度 I0 ≈ {format_eng(I0/1e4, 'W/cm²')}")
+                st.write(f"（参考：特征平均 P/(πw²) ≈ {format_eng(I_avg_over_disk/1e4, 'W/cm²')}）")
             else:
-                st.success(f"高斯峰值功率密度 I0 ≈ {I0:.4g} W/m²")
-                st.write(f"（参考：特征平均 P/(πw²) ≈ {I_avg_over_disk:.4g} W/m²）")
+                st.success(f"高斯峰值功率密度 I0 ≈ {format_eng(I0, 'W/m²')}")
+                st.write(f"（参考：特征平均 P/(πw²) ≈ {format_eng(I_avg_over_disk, 'W/m²')}）")
 
     st.markdown("---")
     st.markdown("### 计算公式与原理说明")
